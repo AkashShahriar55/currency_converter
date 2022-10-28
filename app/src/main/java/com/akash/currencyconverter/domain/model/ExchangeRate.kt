@@ -1,7 +1,19 @@
 package com.akash.currencyconverter.domain.model
 
-data class ExchangeRate(
-    var base:String,
-    var date:String,
-    var rates:Map<String,Double>
-)
+import androidx.room.TypeConverter
+import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
+
+@Serializable
+class ExchangeRate(){
+    @SerializedName("base")
+    var base:String = ""
+    @SerializedName("date")
+    var date:String=""
+    @SerializedName("rates")
+    var rates:Map<String,Double> = HashMap()
+
+    override fun toString(): String {
+        return base + " "  + date + " " + rates.toString()
+    }
+}

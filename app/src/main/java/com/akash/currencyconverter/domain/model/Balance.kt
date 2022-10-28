@@ -2,11 +2,16 @@ package com.akash.currencyconverter.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "movies")
+@Entity(
+    tableName = "balance_table"
+)
 data class Balance(
-    @PrimaryKey(autoGenerate = true)
-    var id:Int = 0,
     var currency:String = "",
     var amount:Double = 0.0
-)
+){
+    @SerializedName("id")
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}

@@ -56,6 +56,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-paging:$room_version"
+    androidTestImplementation "androidx.room:room-testing:$room_version"
 
     //hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -64,4 +65,32 @@ dependencies {
 
     //edge to edge
     implementation 'de.halfbit:edge-to-edge:0.10'
+
+    //Work manager
+    implementation "androidx.work:work-runtime-ktx:$workVersion"
+    androidTestImplementation "androidx.work:work-testing:$workVersion"
+
+    //gson
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    // Testing
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation("androidx.work:work-testing:$workVersion")
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+
+
+    //for testing retrofit.
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.7.2")
+
+    //Kotlinx Serialization
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2"
 }
