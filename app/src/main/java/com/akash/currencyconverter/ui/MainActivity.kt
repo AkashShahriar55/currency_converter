@@ -1,5 +1,6 @@
 package com.akash.currencyconverter.ui
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.akash.currencyconverter.R
@@ -121,7 +123,13 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnConvert.setOnClickListener {
-            mainViewModel.validateAndConvert(sellCurrency,buyCurrency,binding.etSellingAmount.text)
+            val message = mainViewModel.validateAndConvert(sellCurrency,buyCurrency,binding.etSellingAmount.text)
+            AlertDialog.Builder(this)
+                .setTitle("Currency converter")
+                .setMessage(message)
+                .setPositiveButton("ok"
+                ) { dialog, which -> dialog?.dismiss() }
+                .show()
         }
 
 

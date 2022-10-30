@@ -8,13 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface CurrencyExchangeRepository {
 
-    suspend fun getAvailableConvertCurrency():LiveData<List<String>>
-
-
-    fun convertBalance(from:String,to:String,amount:Double):Double
-
-    fun validateAmount(currency:String,amount: Double):Double
-
     suspend fun submitConvert(from: Balance,to: Balance):LiveData<Response<Int>>
 
 

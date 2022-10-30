@@ -93,7 +93,7 @@ class CurrencyExchangeViewModel @Inject constructor(
         return 0.0
     }
 
-    fun validateAndConvert(sellCurrency: String?, buyCurrency: String?, text: Editable?) {
+    fun validateAndConvert(sellCurrency: String?, buyCurrency: String?, text: Editable?):String {
         sellCurrency?.let { sell->
             buyCurrency?.let { buy->
                 text?.let { amountString->
@@ -108,7 +108,7 @@ class CurrencyExchangeViewModel @Inject constructor(
 
 
                         if(convertedAmount == 0.0)
-                            return
+                            return "Please choose a different currency"
 
 
                         userBalances.value?.let {balances->
@@ -117,7 +117,7 @@ class CurrencyExchangeViewModel @Inject constructor(
 
                             for(balance in balances){
                                 if(sellCurrency == balance.currency && totalAmount > balance.amount){
-                                    return
+                                    return "Insufficient balance"
                                 }else if(sellCurrency == balance.currency && totalAmount <= balance.amount){
                                     Log.d("check", "validateAndConvert: " + balance.id + " " + balance.currency)
                                     sellBalance.id = balance.id
@@ -136,7 +136,7 @@ class CurrencyExchangeViewModel @Inject constructor(
                                 commissionRepository.deductCommission()
                             }
 
-                            return "You have converted $amount EUR to 110.00 USD. Commission Fee - 0.70 EUR."
+                            return "You have converted $amount $sellCurrency to $convertedAmount $buyCurrency. Commission Fee - $commission $sellCurrency."
 
 
 
@@ -148,6 +148,8 @@ class CurrencyExchangeViewModel @Inject constructor(
                 }
             }
         }
+
+        return "Please choose a different currency with valid amount to convert"
     }
 
     init {

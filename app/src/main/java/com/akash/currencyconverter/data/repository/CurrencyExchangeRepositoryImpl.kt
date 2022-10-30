@@ -22,9 +22,6 @@ class CurrencyExchangeRepositoryImpl(
     : CurrencyExchangeRepository {
 
 
-    private var userBalances:List<Balance> = arrayListOf()
-    private val exchangeRate:ExchangeRate? = null
-
 
 
 
@@ -47,7 +44,7 @@ class CurrencyExchangeRepositoryImpl(
                     emit(response.data)
                 }
 
-                delay(1000000000)
+                delay(5000)
             }
         }
 
@@ -58,18 +55,7 @@ class CurrencyExchangeRepositoryImpl(
     val globalResponse:MutableLiveData<Response<Any>> = MutableLiveData<Response<Any>>()
 
 
-    override suspend fun getAvailableConvertCurrency(): LiveData<List<String>> {
-        TODO("Not yet implemented")
-    }
 
-
-    override fun convertBalance(from: String, to: String, amount: Double): Double {
-        TODO("Not yet implemented")
-    }
-
-    override fun validateAmount(currency: String, amount: Double): Double {
-        TODO("Not yet implemented")
-    }
 
     override suspend fun submitConvert(
         from: Balance,
