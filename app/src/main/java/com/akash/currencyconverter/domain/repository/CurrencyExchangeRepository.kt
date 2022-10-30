@@ -15,7 +15,7 @@ interface CurrencyExchangeRepository {
 
     fun validateAmount(currency:String,amount: Double):Double
 
-    suspend fun submitConvert(from: String,to: String,amount: Double):LiveData<Response<Double>>
+    suspend fun submitConvert(from: Balance,to: Balance):LiveData<Response<Int>>
 
 
     suspend fun fetchUserBalances(): LiveData<List<Balance>>

@@ -116,7 +116,7 @@
 
                     <Spinner
                         android:id="@+id/sell_currency"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginTop="5dp"
                         android:textAlignment="center"
@@ -180,7 +180,7 @@
 
                     <Spinner
                         android:id="@+id/buy_currency"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_marginTop="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -192,7 +192,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_convert"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -207,8 +207,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Balances"
-            app:layout_constraintStart_toStartOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintStart_toStartOf="@+id/btn_convert"
+            app:layout_constraintTop_toBottomOf="@+id/btn_convert" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_balance"

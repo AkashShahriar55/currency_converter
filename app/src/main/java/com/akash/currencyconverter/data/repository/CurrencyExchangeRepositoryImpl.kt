@@ -1,6 +1,5 @@
 package com.akash.currencyconverter.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
@@ -73,10 +72,9 @@ class CurrencyExchangeRepositoryImpl(
     }
 
     override suspend fun submitConvert(
-        from: String,
-        to: String,
-        amount: Double
-    ): LiveData<Response<Double>> {
-        TODO("Not yet implemented")
+        from: Balance,
+        to: Balance
+    ): LiveData<Response<Int>> {
+        return balanceLocalDataSource.updateOrInsertBalances(listOf(from,to)).asLiveData()
     }
 }

@@ -120,6 +120,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
+        binding.btnConvert.setOnClickListener {
+            mainViewModel.validateAndConvert(sellCurrency,buyCurrency,binding.etSellingAmount.text)
+        }
+
 
 
 
